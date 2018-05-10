@@ -1,30 +1,31 @@
 'use strict'
 
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 
 module.exports = (env) => {
   const plugins = [
-    new ExtractTextPlugin("css/[name].[hash].css")
+    new ExtractTextPlugin('css/[name].css')
   ]
 
   if (env.NODE_ENV === 'production') {
     plugins.push(
-      new CleanWebpackPlugin(['dist'], {root: __dirname})
+      new CleanWebpackPlugin(['dist'], { root: __dirname })
     )
   }
 
   return {
 
     entry: {
-      "home": path.resolve(__dirname, 'src/entries/home.js'),
+      'home': path.resolve(__dirname, 'src/entries/home.js'),
+      'redux': path.resolve(__dirname, 'src/entries/redux.js')
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].js',
-      publicPath: path.resolve(__dirname, 'dist')+"/",
+      publicPath: path.resolve(__dirname, 'dist/'),
       chunkFilename: 'js/[id].[chunkhash].js',
     },
     devServer: {
@@ -64,7 +65,7 @@ module.exports = (env) => {
             options: {
               limit: 10000,
               fallback: 'file-loader',
-              name: 'images/[name].[hash].[ext]',
+              name: 'images/[name].[ext]',
             }
           }
         },
