@@ -14,7 +14,14 @@ function handleSubmit(e) {
   })
 }
 
-const reducer = (state) => state
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_SONG':
+      return [...state, action.payload]
+    default:
+      return state
+  }
+}
 const initialState = [
   { "title": "Despacito" },
   { "title": "One more time" },
