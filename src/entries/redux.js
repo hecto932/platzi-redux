@@ -8,6 +8,10 @@ function handleSubmit(e) {
   const data = new FormData($form)
   const title = data.get('title')
   console.log(title)
+  store.dispatch({
+    type: 'ADD_SONG',
+    payload: { title }
+  })
 }
 
 const reducer = (state) => state
