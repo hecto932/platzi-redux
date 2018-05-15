@@ -6,16 +6,15 @@ import reducer from '../reducers/data'
 import Home from '../pages/containers/home'
 import data from '../api.json'
 
-
 const initialState = {
   data: {
-    ...data,
-    search: []
-  }
+    ...data
+  },
+  search: []
 }
 
 const store = createStore(
-  (state) => state,
+  reducer,
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
@@ -29,4 +28,5 @@ render(
   <Provider store={store}>
     <Home />
   </Provider>
-  , homeContainer)
+  , homeContainer
+)
