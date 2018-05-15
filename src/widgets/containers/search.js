@@ -36,4 +36,4 @@ class SearchContainer extends Component {
   }
 }
 
-export default conect()(SearchContainer)
+export default connect()(SearchContainer)
