@@ -1,6 +1,6 @@
 function data (state, action) {
   switch (action.type) {
-    case 'fasdasd': {
+    case 'SEARCH_VIDEO': {
       return state
     }
     default:
