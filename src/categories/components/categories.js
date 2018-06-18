@@ -12,6 +12,7 @@ function Categories(props) {
       {
         props.search.map(item => {
           return <Media 
+            title={item.get('title')}
             key={item.get('id')}
             author={item.get('author')}
             type={item.get('type')}
