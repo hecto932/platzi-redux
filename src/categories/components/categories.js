@@ -5,20 +5,28 @@ import Search from '../../widgets/containers/search'
 import Media from '../../playlist/components/media'
 
 function Categories(props) {
+  console.log(props.categories)
   return (
     <div className="Categories">
       <Search />
       {
-        props.search.map((item) => {
-          return <Media {...item} key={item.id} />
+        props.search.map(item => {
+          return <Media 
+            key={item.get('id')}
+            author={item.get('author')}
+            type={item.get('type')}
+            cover={item.get('cover')}
+            src={item.get('src')}
+            id={item.get('id')}
+          />
         })
       }
       {
         props.categories.map(item => {
           return (
             <Category 
-              key={item.id} 
-              {...item}
+              key={item.get('id')} 
+              {...item.toJS()}
               handleOpenModal={props.handleOpenModal}
             />
           )
