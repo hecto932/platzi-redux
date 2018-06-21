@@ -5,8 +5,10 @@ import { Provider } from 'react-redux'
 import { Map as map } from 'immutable'
 import reducer from '../reducers/index'
 import Home from '../pages/containers/home'
+import logger from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-const logger = ({ getState, dispatch }) => next => action => {
+const logger_ = ({ getState, dispatch }) => next => action => {
   console.log('vamos a enviar esta accion', action)
   const value = next(action)
   console.log('este es mi nuevo estado', getState().toJS())
@@ -16,8 +18,12 @@ const logger = ({ getState, dispatch }) => next => action => {
 const store = createStore(
   reducer,
   map({}),
-  applyMiddleware(logger)
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    applyMiddleware(
+      logger,
+      logger_
+    )
+  )
 )
 
 console.log(store.getState())
