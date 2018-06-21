@@ -7,6 +7,7 @@ import reducer from '../reducers/index'
 import Home from '../pages/containers/home'
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
 
 const logger_ = ({ getState, dispatch }) => next => action => {
   console.log('vamos a enviar esta accion', action)
@@ -21,7 +22,7 @@ const store = createStore(
   composeWithDevTools(
     applyMiddleware(
       logger,
-      logger_
+      thunk
     )
   )
 )

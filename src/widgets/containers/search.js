@@ -10,7 +10,7 @@ class SearchContainer extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.actions.searchEntities(this.input.value)
+    this.props.actions.searchAsyncEntities(this.input.value)
   }
   handleInputChange = (event) => {
     this.setState({
